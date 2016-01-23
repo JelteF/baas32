@@ -15,7 +15,7 @@ setup(
     author='Bas van den Heuvel',
     author_email='vdheuvel.bas@gmail.com',
     url='https://github.com/klaplong/baas32.git',
-    # download_url='https://pypi.python.org/pypi/base32-crockford/',
+    download_url='https://pypi.python.org/pypi/baas32/',
     py_modules=['baas32'],
     include_package_data=True,
     classifiers=[
