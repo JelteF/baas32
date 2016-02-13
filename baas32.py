@@ -42,15 +42,17 @@ __all__ = ["encode", "decode", "normalize"]
 if PY3:
     string_types = str,
 else:
-    string_types = basestring,
+    string_types = basestring,  # noqa
 
 # The encoded symbol space does not include I, L, O or S
 symbols = '0123456789ABCDEFGHJKMNPQRTUVWXYZ'
 # These five symbols are exclusively for checksum values
 check_symbols = '*~$='
 
-encode_symbols = dict((i, ch) for (i, ch) in enumerate(symbols + check_symbols))
-decode_symbols = dict((ch, i) for (i, ch) in enumerate(symbols + check_symbols))
+encode_symbols = dict((i, ch) for (i, ch)
+                      in enumerate(symbols + check_symbols))
+decode_symbols = dict((ch, i) for (i, ch)
+                      in enumerate(symbols + check_symbols))
 normalize_symbols = str.maketrans('IiLlOoSs', '11110055')
 valid_symbols = re.compile('^[%s]+[%s]?$' % (symbols,
                                              re.escape(check_symbols)))
@@ -165,10 +167,14 @@ def normalize(symbol_string, strict=False):
         raise TypeError("string is of invalid type %s" %
                         symbol_string.__class__.__name__)
 
-    norm_string = symbol_string.replace('-', '').translate(normalize_symbols).upper()
+    norm_string = (symbol_string
+                   .replace('-', '')
+                   .translate(normalize_symbols)
+                   .upper())
 
     if not valid_symbols.match(norm_string):
-        raise ValueError("string '%s' contains invalid characters" % norm_string)
+        raise ValueError("string '%s' contains invalid characters"
+                         % norm_string)
 
     if strict and norm_string != symbol_string:
         raise ValueError("string '%s' requires normalization" % symbol_string)
