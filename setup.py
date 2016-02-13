@@ -7,7 +7,7 @@ import baas32
 
 setup(
     name='baas32',
-    version='0.3.1',
+    version='0.3.2',
     description=("An alternative Python implementation of Douglas Crockford's "
                  "base32 encoding scheme"),
     long_description=baas32.__doc__,
