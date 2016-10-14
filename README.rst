@@ -29,7 +29,7 @@ Installation
 
 To install, simply run::
 
-   pip install git+git@github.com:klaplong/baas32.git
+   pip install git+git@github.com:viaict/baas32.git
 
 Usage
 -----
